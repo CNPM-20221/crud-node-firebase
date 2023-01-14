@@ -20,7 +20,6 @@ FROM node:16.17.0-alpine AS release
 ARG WORK_DIR=/var/www/node
 WORKDIR ${WORK_DIR}
 # copy the rest of files
-COPY --from=build ${WORK_DIR}/node_modules ./node_modules
-COPY --from=build ${WORK_DIR}/package*.json ./
+COPY --from=build ${WORK_DIR}/ ./
 # define CMD
 CMD npm run start:prod
