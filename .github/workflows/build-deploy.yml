@@ -53,6 +53,7 @@ jobs:
       AWS_REGION: ap-southeast-1
       AWS_ECS_ROLE: RoleToDeployToTrungECS
       APP_NAME: trung-cnpm-20221-be
+      CONTAINER_NAME: trung-cnpm-2021-be
       AWS_ECS_CLUSTER: trung-owned-cluster
     runs-on: ubuntu-20.04
     outputs:
@@ -79,7 +80,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: ${{ env.APP_NAME }}
+          container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ needs.build.outputs.ci-image-tag }}
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
