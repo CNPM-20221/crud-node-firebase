@@ -51,9 +51,9 @@ jobs:
       - build
     env:
       AWS_REGION: ap-southeast-1
-      AWS_ECS_ROLE: test
+      AWS_ECS_ROLE: RoleToDeployToTrungECS
       APP_NAME: trung-cnpm-20221-be
-      AWS_ECS_CLUSTER: trung-test
+      AWS_ECS_CLUSTER: trung-owned-cluster
     runs-on: ubuntu-20.04
     outputs:
       ci-image-tag: ${{ steps.build-image.outputs.image }}
@@ -73,7 +73,7 @@ jobs:
           role-duration-seconds: 2700
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition $APP_NAME-${{ matrix.postfix }} --query taskDefinition > task-definition.json
+          aws ecs describe-task-definition --task-definition $APP_NAME --query taskDefinition > task-definition.json
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
@@ -85,5 +85,5 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ env.APP_NAME }}-${{ matrix.postfix }}
+          service: ${{ env.APP_NAME }}
           cluster: ${{ env.AWS_ECS_CLUSTER }}
