@@ -13,7 +13,7 @@ jobs:
   build:
     env:
       AWS_REGION: ap-southeast-1
-      AWS_ECR_ROLE: test
+      AWS_ECR_ROLE: RoleToPushToTrungECR
     runs-on: ubuntu-20.04
     outputs:
       ci-image-tag: ${{ steps.build-image.outputs.image }}
