@@ -12,6 +12,7 @@ const {addHoKhau} = require('./controller/addHoKhau')
 const {getChiPhi} = require('./controller/getChiPhi.js')
 const {getHoKhau} = require('./controller/getHoKhau.js')
 const {getNhanKhau} = require('./controller/getNhanKhau.js')
+const {pageAccount} = require('./controller/pageAcount')
 app.use(express.json())
 
 app.get('/health', (req, res) => {
@@ -30,6 +31,8 @@ app.get('/allchiphi',getChiPhi)
 app.get('/allnhankhau',getNhanKhau)
 
 app.get('/allhokhau',getHoKhau)
+
+app.get('/page1',pageAccount)
 
 
 // POST Method
