@@ -12,7 +12,12 @@ const {addHoKhau} = require('./controller/addHoKhau')
 const {getChiPhi} = require('./controller/getChiPhi.js')
 const {getHoKhau} = require('./controller/getHoKhau.js')
 const {getNhanKhau} = require('./controller/getNhanKhau.js')
-const {pageAccount} = require('./controller/pageAcount')
+const {pageChiPhi1} = require('./controller/pageChiPhi1')
+const {pageChiPhi2} = require('./controller/pageChiPhi2')
+const {pageChiPhi3} = require('./controller/pageChiPhi3')
+const {pageChiPhi4} = require('./controller/pageChiPhi4')
+const {pageAccount1} = require('./controller/pageAccount1')
+const {pageAccount2} = require('./controller/pageAccount2')
 app.use(express.json())
 
 app.get('/health', (req, res) => {
@@ -25,15 +30,19 @@ app.get('/health', (req, res) => {
 app.get('/allpeople', getAllAccount)
 
 app.get('/login', login)
-
+        // Get page chi phi
 app.get('/allchiphi',getChiPhi)
+        app.get('/pagechiphi1',pageChiPhi1)
+        app.get('/pagechiphi2',pageChiPhi2)
+        app.get('/pagechiphi3',pageChiPhi3)
+        app.get('/pagechiphi4',pageChiPhi4)
 
 app.get('/allnhankhau',getNhanKhau)
 
 app.get('/allhokhau',getHoKhau)
 
-app.get('/page1',pageAccount)
-
+app.get('/pageAccount1',pageAccount1)
+app.get('/pageAccount2',pageAccount2)
 
 // POST Method
 app.post('/addpeople', async (req, res) => {
