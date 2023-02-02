@@ -12,6 +12,8 @@ const {logout} = require('./controller/logout')
 const {addChiPhi} = require('./controller/addChiPhi')
 const {addNhanKhau} = require('./controller/addNhanKhau')
 const {addHoKhau} = require('./controller/addHoKhau')
+
+const {addTestNhanKhau} = require('./controller/addTestNhanKhau')
 // Import get function
 const {chiphi_pagination} = require('./controller/getChiPhi')
 const {hokhau_pagination} = require('./controller/getHoKhau')
@@ -20,7 +22,9 @@ const {getAllAccount, account_pagination} = require('./controller/getAccount')
 
 const {getOneChiPhi} = require('./controller/getOneChiPhi')
 const {getOneNhanKhau} = require('./controller/getOneNhanKhau')
-const {getOneHoKhau,getOneHoKhauAllNhanKhau}  = require('./controller/getOneHoKhau')
+const {getOneHoKhau}  = require('./controller/getOneHoKhau')
+
+const {getTestOneNhanKhau} = require('./controller/getTestOneNhanKhau')
 
 // Import detele fuction
 const {deleteChiPhi} =require('./controller/deleteChiPhi')
@@ -60,7 +64,8 @@ app.get('/pagenhankhau',nhankhau_pagination)
 app.get('/get1chiphi/:id',getOneChiPhi)
 app.get('/get1nhankhau/:id',getOneNhanKhau)
 app.get('/get1hokhau/:id',getOneHoKhau)
-app.get('/get1hokhauallnhankhau/:id',getOneHoKhauAllNhanKhau)
+
+app.get('/gettest1nhankhau/:id',getTestOneNhanKhau)
 
 // POST Method
 
@@ -71,6 +76,7 @@ app.post('/addhokhau',checkLogin, addHoKhau)
 app.post('/login', login)
 app.post('/logout', checkLogin, logout)
 
+app.post('/addtestnhankhau',addTestNhanKhau)
 // PUT Method
 app.put('/updateaccount/:id',updateAccount)
 app.put('/updateChiPhi/:id',updateChiPhi)
