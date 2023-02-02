@@ -26,11 +26,6 @@ module.exports.addNhanKhau = async (req, res) => {
         idChuho: entry.id
       }
       dbquery.set(ChuhoObject);
-        res.status(200).send({
-          status: 'success',
-          message: 'HoKhau added successfully !',
-          data: ChuhoObject,
-        });
       entry.set(peopleObject);
         res.status(200).send({
           status: 'success',
