@@ -5,6 +5,10 @@ module.exports.nhankhau_pagination = async (req, res, next) => {
     try{
       let n_cursor = req.query.nextCursor
       let size = parseInt(req.query.size)
+      let total_size
+      db.collection('nhankhau').get()
+                        .then((querySnapshot) => {total_size = querySnapshot.size})
+      console.log(total_size)
       const list_nhankhau = []
       if (n_cursor) {
         const querydb = await db.collection('nhankhau').orderBy('id')
@@ -22,7 +26,8 @@ module.exports.nhankhau_pagination = async (req, res, next) => {
       return res.status(200).json({
         data: list_nhankhau.slice(0,size),
         nextCursor: list_nhankhau[size].id,
-        size: size   
+        size: size,
+        total_size: total_size
       })
       } 
     catch(error){

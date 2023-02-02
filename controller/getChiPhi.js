@@ -5,6 +5,10 @@ module.exports.chiphi_pagination = async (req, res, next) => {
     try{
       let n_cursor = req.query.nextCursor
       let size = parseInt(req.query.size)
+      let total_size
+      db.collection('chiphi').get()
+                        .then((querySnapshot) => {total_size = querySnapshot.size})
+      console.log(total_size)
       const list_chiphi = []
       if (n_cursor) {
         const querydb = await db.collection('chiphi').orderBy('id')
@@ -22,7 +26,8 @@ module.exports.chiphi_pagination = async (req, res, next) => {
       return res.status(200).json({
         data: list_chiphi.slice(0,size),
         nextCursor: list_chiphi[size].id,
-        size: size   
+        size: size,
+        total_size: total_size   
       })
       } 
     catch(error){

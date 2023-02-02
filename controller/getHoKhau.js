@@ -5,17 +5,21 @@ module.exports.hokhau_pagination = async (req, res, next) => {
     try{
       let n_cursor = req.query.nextCursor
       let size = parseInt(req.query.size)
+      let total_size
+      db.collection('hokhau').get()
+                        .then((querySnapshot) => {total_size = querySnapshot.size})
+      console.log(total_size)
       const list_hokhau = []
       if (n_cursor) {
         console.log(n_cursor);
-        const querydb = await db.collection('hokhau').orderBy('id')
+        const querydb = await db.collection('hokhau').orderBy('idChuho')
                                 .startAt(n_cursor)
                                 .limit(size+1)
                                 .get()
         querydb.forEach((doc) => list_hokhau.push(doc.data()))
       }
       else {
-        const querydb = await db.collection('hokhau').orderBy('id')
+        const querydb = await db.collection('hokhau').orderBy('idChuho')
                                 .limit(size+1)
                                 .get()
         querydb.forEach((doc) => list_hokhau.push(doc.data()))
@@ -23,7 +27,8 @@ module.exports.hokhau_pagination = async (req, res, next) => {
       return res.status(200).json({
         data: list_hokhau.slice(0,size),
         nextCursor: list_hokhau[size].id,
-        size: size   
+        size: size,
+        total_size: total_size   
       })
       } 
     catch(error){
