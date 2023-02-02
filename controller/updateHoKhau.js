@@ -1,10 +1,11 @@
 const {db} = require('../config/firebase');
 
 module.exports.updateHoKhau = async (req, res) => {
-  const {maho,sothanhvien,diachi} = req.body;
+  const {tenchuho,sothanhvien,diachi} = req.body;
   try {
     const peopleObject = {
-        maho,
+        maho: req.params.id,
+        tenchuho,
         sothanhvien,
         diachi
       };
