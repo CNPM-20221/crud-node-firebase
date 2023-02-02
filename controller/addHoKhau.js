@@ -1,15 +1,14 @@
 const {db} = require('../config/firebase');
 
 module.exports.addHoKhau = async (req, res) => {
-  const {tenchuho,sothanhvien,diachi} = req.body;
+  const {idChuho,sothanhvien,diachi} = req.body;
   try {
     const entry = db.collection('hokhau').doc();
     const peopleObject = {
       maho :entry.id,
       sothanhvien,
       diachi,
-      tenchuho
-
+      idChuho
 
     };
       
