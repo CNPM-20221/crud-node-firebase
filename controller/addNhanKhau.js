@@ -31,6 +31,12 @@ module.exports.addNhanKhau = async (req, res) => {
           message: 'HoKhau added successfully !',
           data: ChuhoObject,
         });
+      entry.set(peopleObject);
+        res.status(200).send({
+          status: 'success',
+          message: 'Nhan khau added, register successfully !',
+          data: peopleObject,
+        });
     }
     else {
       entry.set(peopleObject);
