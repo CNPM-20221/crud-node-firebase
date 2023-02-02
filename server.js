@@ -12,11 +12,19 @@ const {logout} = require('./controller/logout')
 const {addChiPhi} = require('./controller/addChiPhi')
 const {addNhanKhau} = require('./controller/addNhanKhau')
 const {addHoKhau} = require('./controller/addHoKhau')
+
+const {addTestNhanKhau} = require('./controller/addTestNhanKhau')
 // Import get function
 const {chiphi_pagination} = require('./controller/getChiPhi')
 const {hokhau_pagination} = require('./controller/getHoKhau')
 const {nhankhau_pagination} = require('./controller/getNhanKhau');
 const {getAllAccount, account_pagination} = require('./controller/getAccount')
+
+const {getOneChiPhi} = require('./controller/getOneChiPhi')
+const {getOneNhanKhau} = require('./controller/getOneNhanKhau')
+const {getOneHoKhau}  = require('./controller/getOneHoKhau')
+
+
 // Import detele fuction
 const {deleteChiPhi} =require('./controller/deleteChiPhi')
 const {deleteHoKhau} =require('./controller/deleteHoKhau')
@@ -52,12 +60,17 @@ app.get('/pagechiphi',chiphi_pagination)
 app.get('/pagehokhau',hokhau_pagination)
 app.get('/pagenhankhau',nhankhau_pagination)
 
+app.get('/get1chiphi/:id',getOneChiPhi)
+app.get('/get1nhankhau/:id',getOneNhanKhau)
+app.get('/get1hokhau/:id',getOneHoKhau)
+
+
 
 // POST Method
 
 app.post('/register', addAccount)
 app.post('/addchiphi',checkLogin, addChiPhi)
-app.post('/addnhankhau', addNhanKhau)
+app.post('/addnhankhau',checkLogin, addNhanKhau)
 app.post('/addhokhau',checkLogin, addHoKhau)
 app.post('/login', login)
 app.post('/logout', checkLogin, logout)
