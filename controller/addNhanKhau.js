@@ -19,6 +19,7 @@ module.exports.addNhanKhau = async (req, res) => {
     }
     if (chuHo==true) {
       const dbquery = db.collection('hokhau').doc()
+      peopleObject.maho = dbquery.id
       const ChuhoObject = {
         maho :dbquery.id,
         sothanhvien:"",
