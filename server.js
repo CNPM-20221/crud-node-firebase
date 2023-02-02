@@ -24,7 +24,6 @@ const {getOneChiPhi} = require('./controller/getOneChiPhi')
 const {getOneNhanKhau} = require('./controller/getOneNhanKhau')
 const {getOneHoKhau}  = require('./controller/getOneHoKhau')
 
-const {getTestOneNhanKhau} = require('./controller/getTestOneNhanKhau')
 
 // Import detele fuction
 const {deleteChiPhi} =require('./controller/deleteChiPhi')
@@ -65,7 +64,7 @@ app.get('/get1chiphi/:id',getOneChiPhi)
 app.get('/get1nhankhau/:id',getOneNhanKhau)
 app.get('/get1hokhau/:id',getOneHoKhau)
 
-app.get('/gettest1nhankhau/:id',getTestOneNhanKhau)
+
 
 // POST Method
 
@@ -76,7 +75,6 @@ app.post('/addhokhau',checkLogin, addHoKhau)
 app.post('/login', login)
 app.post('/logout', checkLogin, logout)
 
-app.post('/addtestnhankhau',addTestNhanKhau)
 // PUT Method
 app.put('/updateaccount/:id',updateAccount)
 app.put('/updateChiPhi/:id',updateChiPhi)
