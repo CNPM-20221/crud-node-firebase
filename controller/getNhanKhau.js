@@ -25,7 +25,7 @@ module.exports.nhankhau_pagination = async (req, res, next) => {
       }
       return res.status(200).json({
         data: list_nhankhau.slice(0,size),
-        nextCursor: list_nhankhau[size].id,
+        nextCursor: list_nhankhau[size] ? list_nhankhau[size].id : undefined,
         size: size,
         total_size: total_size
       })

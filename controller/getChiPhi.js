@@ -25,7 +25,7 @@ module.exports.chiphi_pagination = async (req, res, next) => {
       }
       return res.status(200).json({
         data: list_chiphi.slice(0,size),
-        nextCursor: list_chiphi[size].id,
+        nextCursor: list_chiphi[size] ? list_chiphi[size].id : undefined,
         size: size,
         total_size: total_size   
       })

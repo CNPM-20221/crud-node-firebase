@@ -26,7 +26,7 @@ module.exports.hokhau_pagination = async (req, res, next) => {
       }
       return res.status(200).json({
         data: list_hokhau.slice(0,size),
-        nextCursor: list_hokhau[size].id,
+        nextCursor: list_hokhau[size] ? list_hokhau[size].id : undefined,
         size: size,
         total_size: total_size   
       })
