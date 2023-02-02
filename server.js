@@ -13,10 +13,9 @@ const {addChiPhi} = require('./controller/addChiPhi')
 const {addNhanKhau} = require('./controller/addNhanKhau')
 const {addHoKhau} = require('./controller/addHoKhau')
 
-const {addTestNhanKhau} = require('./controller/addTestNhanKhau')
 // Import get function
 const {chiphi_pagination} = require('./controller/getChiPhi')
-const {hokhau_pagination} = require('./controller/getHoKhau')
+const {thanhvienhokhau,hokhau_pagination} = require('./controller/getHoKhau')
 const {nhankhau_pagination} = require('./controller/getNhanKhau');
 const {getAllAccount, account_pagination} = require('./controller/getAccount')
 
@@ -62,7 +61,7 @@ app.get('/pagenhankhau',nhankhau_pagination)
 
 app.get('/get1chiphi/:id',getOneChiPhi)
 app.get('/get1nhankhau/:id',getOneNhanKhau)
-app.get('/get1hokhau/:id',getOneHoKhau)
+app.get('/get1hokhau/:id',thanhvienhokhau)
 
 
 
